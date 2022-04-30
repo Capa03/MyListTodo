@@ -16,6 +16,7 @@ public class MemoryDB {
     public static List<TodoList> getAllTodo() {
 
         if (todo == null) {
+
             todo = new ArrayList<>();
         }
         return todo;
