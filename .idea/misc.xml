@@ -6,7 +6,8 @@
         <entry key="..\:/AndroidProject/MyListTodo/app/src/main/res/drawable/new_task_button_shape.xml" value="0.1625" />
         <entry key="..\:/AndroidProject/MyListTodo/app/src/main/res/drawable/text_input.xml" value="0.1625" />
         <entry key="..\:/AndroidProject/MyListTodo/app/src/main/res/layout/activity_creat_new_task.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidProject/MyListTodo/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/AndroidProject/MyListTodo/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/MyListTodo/app/src/main/res/layout/my_row.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

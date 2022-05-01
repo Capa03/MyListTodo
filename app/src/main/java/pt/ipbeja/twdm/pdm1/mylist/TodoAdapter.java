@@ -2,22 +2,28 @@ package pt.ipbeja.twdm.pdm1.mylist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder> {
 
     public List<TodoList> todoList;
     private final TodoAdapterEventListener eventListener;
-    
+
+
     public TodoAdapter(TodoAdapterEventListener eventListener){
         this.eventListener = eventListener;
         this.todoList = new ArrayList<>();
@@ -35,6 +41,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
         TodoList todoList = this.todoList.get(position);
         holder.setTitle(todoList.getTitle());
         holder.setTextViewDescription(todoList.getDescription());
+        holder.setTextViewDateData(todoList.getDateData());
 
         holder.rootView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -59,6 +66,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
     public static class TodoViewHolder extends RecyclerView.ViewHolder{
         private TextView textViewTitle;
         private TextView textViewDescription;
+        private TextView textViewDateData;
         private View rootView;
         private Context context;
 
@@ -68,6 +76,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
             this.rootView = rootView;
             this.textViewTitle = rootView.findViewById(R.id.textViewTitle);
             this.textViewDescription = rootView.findViewById(R.id.textViewDescription);
+            this.textViewDateData = rootView.findViewById(R.id.textViewData);
         }
 
 
@@ -77,6 +86,10 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
 
         public void setTextViewDescription(String description){
             this.textViewDescription.setText(description);
+        }
+
+        public void setTextViewDateData(String date){
+            this.textViewDateData.setText(date);
         }
     }
     

@@ -1,10 +1,12 @@
 package pt.ipbeja.twdm.pdm1.mylist;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements TodoAdapter.TodoAdapterEventListener {
     private TextView empty;
     private TodoAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +46,12 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.TodoA
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void onNewTask(View view) {
         Intent intent = new Intent(this, CreatNewTask.class);
         startActivity(intent);
     }
+
     @Override
     public void onTodoClicked(int index) {
         MemoryDB.removeTask(index);
