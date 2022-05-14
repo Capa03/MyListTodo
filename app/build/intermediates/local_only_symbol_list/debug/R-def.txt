@@ -27,6 +27,7 @@ id guideline7
 id guideline8
 id guideline9
 id recyclerView
+id textViewData
 id textViewDescription
 id textViewNotingToDo
 id textViewTitle
