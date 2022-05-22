@@ -19,7 +19,6 @@ public class CreatNewTask extends AppCompatActivity {
     public EditText description;
     public TextView date;
     public LocalDate localDate = LocalDate.now();
-    public static int counter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,16 +32,15 @@ public class CreatNewTask extends AppCompatActivity {
         String dataTitle = title.getText().toString();
         String dataDescription = description.getText().toString();
         String dataDate = this.localDate.toString();
-        counter++;
 
         if(dataTitle.isEmpty()) {
             Toast.makeText(this,"Title is Empty, Please Insert a Title",Toast.LENGTH_SHORT).show();
             return;
         }
-        MemoryDB.getAllTodo().add(new TodoList(counter,dataTitle,dataDescription,dataDate));
+        TodoList todoList = new TodoList(0,dataTitle,dataDescription,dataDate);
 
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+        AppDataBase.getInstance(this).getTodoListDAO().insert(todoList);
+        finish();
     }
 
 

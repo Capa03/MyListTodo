@@ -1,19 +1,24 @@
 package pt.ipbeja.twdm.pdm1.mylist;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class TodoList {
-    private int id;
+    @PrimaryKey(autoGenerate = true)
+    private long id;
     private String title;
     private String description;
     private String dateData;
 
-    public TodoList(int id, String title, String description,String dateData){
+    public TodoList(long id, String title, String description,String dateData){
         this.id = id;
         this.title = title;
         this.description = description;
         this.dateData = dateData;
     }
 
-    public int getId() {
+    public long getId() {
         return this.id;
     }
 

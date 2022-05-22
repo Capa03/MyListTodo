@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.TodoA
     @Override
     protected void onStart() {
         super.onStart();
-        this.adapter.updateList(MemoryDB.getAllTodo());
+        this.adapter.updateList(AppDataBase.getInstance(this).getTodoListDAO().getAll());
     }
 
     private void empty(){
-        if(MemoryDB.getAllTodo().isEmpty()){
+        if(AppDataBase.getInstance(this).getTodoListDAO().getAll().isEmpty()){
             this.empty.setVisibility(View.VISIBLE);
         }else{
             this.empty.setVisibility(View.INVISIBLE);
@@ -53,9 +53,10 @@ public class MainActivity extends AppCompatActivity implements TodoAdapter.TodoA
     }
 
     @Override
-    public void onTodoClicked(int index) {
-        MemoryDB.removeTask(index);
-        this.adapter.updateList(MemoryDB.getAllTodo());
+    public void onTodoClicked(long todoId) {
+        TodoList todoList = AppDataBase.getInstance(this).getTodoListDAO().getById(todoId);
+        AppDataBase.getInstance(this).getTodoListDAO().delete(todoList);
+        this.adapter.updateList(AppDataBase.getInstance(this).getTodoListDAO().getAll());
         empty();
     }
 }
